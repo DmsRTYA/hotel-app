@@ -897,11 +897,6 @@ $harga_kamar = [
 
 </main>
 
-<!-- ===================== FOOTER ===================== -->
-<footer>
-    &copy; <?= date('Y') ?> <span>The Grand Arcadia Hotel</span> — Sistem Reservasi Online
-</footer>
-
 <!-- ===================== MODAL HAPUS ===================== -->
 <div class="modal-overlay" id="modalHapus">
     <div class="modal-box">
