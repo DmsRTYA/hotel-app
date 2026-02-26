@@ -36,7 +36,7 @@ $harga_kamar = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Grand Arcadia — Reservasi Hotel</title>
+    <title>The Grand Mugarsari — Reservasi Hotel</title>
 
     <!-- Google Fonts: Playfair Display + Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -613,8 +613,8 @@ $harga_kamar = [
 <header class="site-header">
     <div class="header-inner">
         <div class="logo">
-            <span class="logo-main">✦ THE GRAND ARCADIA</span>
-            <span class="logo-sub">Luxury Hotel &amp; Resort</span>
+            <span class="logo-main">✦ THE GRAND MUGARSARI</span>
+            <span class="logo-sub">Hotel Mewah &amp; View Aduhai</span>
         </div>
         <nav class="nav-links">
             <a href="#form-pesan" class="nav-btn active">Reservasi</a>
@@ -626,7 +626,7 @@ $harga_kamar = [
 <!-- ===================== HERO ===================== -->
 <section class="hero">
     <p class="hero-eyebrow">✦ Sistem Reservasi Online ✦</p>
-    <h1>Selamat Datang di <em>The Grand Arcadia</em></h1>
+    <h1>Selamat Datang di <em>The Grand Mugarsari</em></h1>
     <div class="gold-divider"></div>
     <p class="hero-desc">Lakukan pemesanan kamar dengan mudah, cepat, dan aman. Pengalaman menginap terbaik menanti Anda.</p>
 </section>
