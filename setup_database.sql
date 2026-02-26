@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS pemesanan (
     jumlah_tamu     INT             NOT NULL DEFAULT 1 COMMENT 'Jumlah tamu',
     permintaan      TEXT            COMMENT 'Permintaan atau catatan khusus',
     status          ENUM(
-                        'Menunggu',
+                        'Booking',
                         'Dikonfirmasi',
                         'Check-in',
                         'Check-out',

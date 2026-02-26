@@ -646,7 +646,7 @@ $harga_kamar = [
     // ---- Hitung statistik dari database ----
     $total_pesan     = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan"));
     $total_checkin   = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Check-in'"));
-    $total_menunggu  = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Menunggu'"));
+    $total_menunggu  = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Booking'"));
     $total_revenue_r = mysqli_query($koneksi, "SELECT SUM(total_harga) AS total FROM pemesanan WHERE status != 'Dibatalkan'");
     $total_revenue   = mysqli_fetch_assoc($total_revenue_r)['total'] ?? 0;
     ?>
@@ -856,7 +856,7 @@ $harga_kamar = [
                             <td>
                                 <?php
                                 $badge_map = [
-                                    'Menunggu'     => 'badge-menunggu',
+                                    'Booking'     => 'badge-menunggu',
                                     'Dikonfirmasi' => 'badge-dikonfirmasi',
                                     'Check-in'     => 'badge-checkin',
                                     'Check-out'    => 'badge-checkout',
