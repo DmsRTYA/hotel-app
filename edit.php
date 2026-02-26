@@ -281,7 +281,7 @@ $harga_kamar = [
                     <label for="status">Status Pemesanan</label>
                     <select id="status" name="status">
                         <?php
-                        $statuses = ['Menunggu','Dikonfirmasi','Check-in','Check-out','Dibatalkan'];
+                        $statuses = ['Booking','Dikonfirmasi','Check-in','Check-out','Dibatalkan'];
                         foreach ($statuses as $s):
                         ?>
                         <option value="<?= $s ?>" <?= ($data['status'] == $s) ? 'selected' : '' ?>>

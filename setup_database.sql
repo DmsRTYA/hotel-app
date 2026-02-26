@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS pemesanan (
                         'Check-in',
                         'Check-out',
                         'Dibatalkan'
-                    ) DEFAULT 'Menunggu' COMMENT 'Status pemesanan',
+                    ) DEFAULT 'Booking' COMMENT 'Status pemesanan',
     total_harga     DECIMAL(15,2)   DEFAULT 0 COMMENT 'Total biaya menginap',
     created_at      TIMESTAMP       DEFAULT CURRENT_TIMESTAMP COMMENT 'Waktu pemesanan dibuat'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Tabel data pemesanan kamar hotel';
