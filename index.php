@@ -856,7 +856,7 @@ $harga_kamar = [
                             <td>
                                 <?php
                                 $badge_map = [
-                                    'Booking'     => 'badge-menunggu',
+                                    'Menunggu'     => 'badge-menunggu',
                                     'Dikonfirmasi' => 'badge-dikonfirmasi',
                                     'Check-in'     => 'badge-checkin',
                                     'Check-out'    => 'badge-checkout',
