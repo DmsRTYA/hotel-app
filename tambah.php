@@ -1,39 +1,70 @@
 <?php
-require 'koneksi.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql = "INSERT INTO reservasi (nama_tamu, kontak, no_identitas, kamar, tgl_checkin, tgl_checkout, jumlah_tamu, total_harga, status) 
-            VALUES (:nama, :kontak, :identitas, :kamar, :checkin, :checkout, :tamu, :harga, :status)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        'nama' => $_POST['nama_tamu'], 'kontak' => $_POST['kontak'], 'identitas' => $_POST['no_identitas'],
-        'kamar' => $_POST['kamar'], 'checkin' => $_POST['tgl_checkin'], 'checkout' => $_POST['tgl_checkout'],
-        'tamu' => $_POST['jumlah_tamu'], 'harga' => $_POST['total_harga'], 'status' => $_POST['status']
-    ]);
+// ============================================================
+// FILE: proses.php
+// FUNGSI: Memproses input form dan menyimpan ke database
+// ============================================================
+// ⚠️  Pastikan file ini ada di folder yang sama dengan index.php
+// ============================================================
+
+require_once 'koneksi.php'; // ⚠️ Hubungkan ke file koneksi.php
+
+// Hanya menerima request POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: index.php");
     exit;
 }
+
+// ---- Ambil dan sanitasi data dari form ----
+// ⚠️  Nama field harus sesuai dengan atribut 'name' pada form di index.php
+
+$nama_tamu      = trim(mysqli_real_escape_string($koneksi, $_POST['nama_tamu']));
+$email          = trim(mysqli_real_escape_string($koneksi, $_POST['email']));
+$no_telepon     = trim(mysqli_real_escape_string($koneksi, $_POST['no_telepon']));
+$no_identitas   = trim(mysqli_real_escape_string($koneksi, $_POST['no_identitas']));
+$jenis_kamar    = trim(mysqli_real_escape_string($koneksi, $_POST['jenis_kamar']));
+$jumlah_kamar   = (int) $_POST['jumlah_kamar'];
+$tanggal_masuk  = $_POST['tanggal_masuk'];
+$tanggal_keluar = $_POST['tanggal_keluar'];
+$jumlah_tamu    = (int) $_POST['jumlah_tamu'];
+$permintaan     = trim(mysqli_real_escape_string($koneksi, $_POST['permintaan'] ?? ''));
+$status         = trim(mysqli_real_escape_string($koneksi, $_POST['status']));
+$total_harga    = (float) $_POST['total_harga'];
+
+// ---- Validasi dasar ----
+if (
+    empty($nama_tamu) || empty($email) || empty($no_telepon) ||
+    empty($no_identitas) || empty($jenis_kamar) ||
+    empty($tanggal_masuk) || empty($tanggal_keluar)
+) {
+    header("Location: index.php?status=gagal");
+    exit;
+}
+
+// Pastikan tanggal keluar setelah tanggal masuk
+if (strtotime($tanggal_keluar) <= strtotime($tanggal_masuk)) {
+    header("Location: index.php?status=gagal");
+    exit;
+}
+
+// ---- Query INSERT ke database ----
+// ⚠️  Nama tabel = 'pemesanan', sesuaikan jika berbeda
+$sql = "INSERT INTO pemesanan 
+            (nama_tamu, email, no_telepon, no_identitas, jenis_kamar, 
+             jumlah_kamar, tanggal_masuk, tanggal_keluar, jumlah_tamu, 
+             permintaan, status, total_harga) 
+        VALUES 
+            ('$nama_tamu', '$email', '$no_telepon', '$no_identitas', '$jenis_kamar',
+             '$jumlah_kamar', '$tanggal_masuk', '$tanggal_keluar', '$jumlah_tamu',
+             '$permintaan', '$status', '$total_harga')";
+
+if (mysqli_query($koneksi, $sql)) {
+    // Berhasil → redirect dengan pesan sukses
+    header("Location: index.php?status=tambah_sukses");
+} else {
+    // Gagal → redirect dengan pesan error
+    header("Location: index.php?status=gagal");
+}
+
+mysqli_close($koneksi);
+exit;
 ?>
-<!DOCTYPE html>
-<html>
-<head><title>Tambah Reservasi</title></head>
-<body>
-    <h2>Tambah Reservasi Hotel</h2>
-    <form method="POST">
-        Nama Tamu: <input type="text" name="nama_tamu" required><br><br>
-        Kontak: <input type="text" name="kontak" required><br><br>
-        No. Identitas: <input type="text" name="no_identitas" required><br><br>
-        Kamar: <input type="text" name="kamar" required><br><br>
-        Check-in: <input type="date" name="tgl_checkin" required><br><br>
-        Check-out: <input type="date" name="tgl_checkout" required><br><br>
-        Jumlah Tamu: <input type="number" name="jumlah_tamu" required><br><br>
-        Total Harga: <input type="number" name="total_harga" required><br><br>
-        Status: 
-        <select name="status">
-            <option value="Booking">Booking</option>
-            <option value="Check-in">Check-in</option>
-            <option value="Check-out">Check-out</option>
-        </select><br><br>
-        <button type="submit">Simpan</button> <a href="index.php">Batal</a>
-    </form>
-</body>
-</html>
