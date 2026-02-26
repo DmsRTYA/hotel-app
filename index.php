@@ -441,7 +441,7 @@ $harga_kamar = [
             font-weight: 700;
             letter-spacing: 0.5px;
         }
-        .badge-menunggu    { background: rgba(241,196,15,0.15); color: #f1c40f; border:1px solid rgba(241,196,15,0.3); }
+        .badge-booking    { background: rgba(241,196,15,0.15); color: #f1c40f; border:1px solid rgba(241,196,15,0.3); }
         .badge-dikonfirmasi{ background: rgba(52,152,219,0.15); color: #5dade2; border:1px solid rgba(52,152,219,0.3); }
         .badge-checkin     { background: rgba(46,204,113,0.15); color: #2ecc71; border:1px solid rgba(46,204,113,0.3); }
         .badge-checkout    { background: rgba(149,165,166,0.15);color: #95a5a6; border:1px solid rgba(149,165,166,0.3);}
@@ -646,7 +646,7 @@ $harga_kamar = [
     // ---- Hitung statistik dari database ----
     $total_pesan     = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan"));
     $total_checkin   = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Check-in'"));
-    $total_menunggu  = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Booking'"));
+    $total_booking  = mysqli_num_rows(mysqli_query($koneksi, "SELECT id FROM pemesanan WHERE status='Booking'"));
     $total_revenue_r = mysqli_query($koneksi, "SELECT SUM(total_harga) AS total FROM pemesanan WHERE status != 'Dibatalkan'");
     $total_revenue   = mysqli_fetch_assoc($total_revenue_r)['total'] ?? 0;
     ?>
@@ -660,7 +660,7 @@ $harga_kamar = [
             <div class="stat-label">Tamu Check-in</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number"><?= $total_menunggu ?></div>
+            <div class="stat-number"><?= $total_booking ?></div>
             <div class="stat-label">Booking</div>
         </div>
         <div class="stat-item">
@@ -761,7 +761,7 @@ $harga_kamar = [
                     <div class="form-group">
                         <label for="status">Status Pemesanan</label>
                         <select id="status" name="status">
-                            <option value="Menunggu">Booking</option>
+                            <option value="Booking">Booking</option>
                             <option value="Dikonfirmasi">Dikonfirmasi</option>
                             <option value="Check-in">Check-in</option>
                             <option value="Check-out">Check-out</option>
@@ -856,13 +856,13 @@ $harga_kamar = [
                             <td>
                                 <?php
                                 $badge_map = [
-                                    'Menunggu'     => 'badge-menunggu',
+                                    'Booking'     => 'badge-booking',
                                     'Dikonfirmasi' => 'badge-dikonfirmasi',
                                     'Check-in'     => 'badge-checkin',
                                     'Check-out'    => 'badge-checkout',
                                     'Dibatalkan'   => 'badge-dibatalkan',
                                 ];
-                                $badge_class = $badge_map[$row['status']] ?? 'badge-menunggu';
+                                $badge_class = $badge_map[$row['status']] ?? 'badge-booking';
                                 ?>
                                 <span class="badge <?= $badge_class ?>">
                                     <?= htmlspecialchars($row['status']) ?>
