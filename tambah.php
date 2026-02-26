@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// FILE: proses.php
+// FILE: tambah.php
 // FUNGSI: Memproses input form dan menyimpan ke database
 // ============================================================
 // ⚠️  Pastikan file ini ada di folder yang sama dengan index.php

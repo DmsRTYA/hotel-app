@@ -661,7 +661,7 @@ $harga_kamar = [
         </div>
         <div class="stat-item">
             <div class="stat-number"><?= $total_menunggu ?></div>
-            <div class="stat-label">Menunggu</div>
+            <div class="stat-label">Booking</div>
         </div>
         <div class="stat-item">
             <div class="stat-number">Rp <?= number_format($total_revenue, 0, ',', '.') ?></div>
@@ -686,8 +686,8 @@ $harga_kamar = [
             </div>
 
             <!--
-                ⚠️  ACTION pada form ini mengarah ke proses.php
-                    Pastikan file proses.php ada di folder yang sama!
+                ⚠️  ACTION pada form ini mengarah ke tambah.php
+                    Pastikan file tambah.php ada di folder yang sama!
             -->
             <form action="tambah.php" method="POST" id="formPemesanan">
 
@@ -761,7 +761,7 @@ $harga_kamar = [
                     <div class="form-group">
                         <label for="status">Status Pemesanan</label>
                         <select id="status" name="status">
-                            <option value="Menunggu">Menunggu</option>
+                            <option value="Menunggu">Booking</option>
                             <option value="Dikonfirmasi">Dikonfirmasi</option>
                             <option value="Check-in">Check-in</option>
                             <option value="Check-out">Check-out</option>
@@ -914,7 +914,7 @@ $harga_kamar = [
                 ⚠️  Tombol ini mengarah ke hapus.php
                     Pastikan file hapus.php ada!
             -->
-            <a href="#" id="btn-konfirm-hapus" class="btn-confirm-delete">Ya, Hapus</a>
+            <a href="hapus.php" id="btn-konfirm-hapus" class="btn-confirm-delete">Ya, Hapus</a>
         </div>
     </div>
 </div>

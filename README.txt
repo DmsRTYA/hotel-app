@@ -5,7 +5,7 @@
 
 DAFTAR FILE:
   ├── index.php           → Halaman utama (form + daftar pemesanan)
-  ├── proses.php          → Memproses input form (INSERT ke DB)
+  ├── tambah.php          → Memproses input form (INSERT ke DB)
   ├── edit.php            → Halaman edit data pemesanan (UPDATE)
   ├── hapus.php           → Menghapus data pemesanan (DELETE)
   ├── koneksi.php         → Koneksi ke database MySQL

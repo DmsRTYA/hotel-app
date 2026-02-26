@@ -9,12 +9,12 @@
 -- ============================================================
 
 -- Buat database jika belum ada
-CREATE DATABASE IF NOT EXISTS hotel_booking
+CREATE DATABASE IF NOT EXISTS db_hotel
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
 -- Gunakan database hotel_booking
-USE hotel_booking;
+USE db_hotel;
 
 -- Buat tabel pemesanan
 CREATE TABLE IF NOT EXISTS pemesanan (
