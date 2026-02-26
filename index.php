@@ -689,7 +689,7 @@ $harga_kamar = [
                 ⚠️  ACTION pada form ini mengarah ke proses.php
                     Pastikan file proses.php ada di folder yang sama!
             -->
-            <form action="proses.php" method="POST" id="formPemesanan">
+            <form action="tambah.php" method="POST" id="formPemesanan">
 
                 <div class="form-grid">
 
