@@ -8,7 +8,7 @@ $data = $query->fetchAll(PDO::FETCH_ASSOC);
 <head><title>Data Reservasi Hotel</title></head>
 <body>
     <h2>Daftar Reservasi Hotel</h2>
-    <a href="create.php">Tambah Reservasi Baru</a><br><br>
+    <a href="tambah.php">Tambah Reservasi Baru</a><br><br>
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
             <th>No</th><th>Nama Tamu</th><th>Kontak</th><th>No. Identitas</th>
@@ -29,7 +29,7 @@ $data = $query->fetchAll(PDO::FETCH_ASSOC);
             <td><?= htmlspecialchars($row['status']); ?></td>
             <td>
                 <a href="edit.php?id=<?= $row['id']; ?>">Edit</a> | 
-                <a href="delete.php?id=<?= $row['id']; ?>" onclick="return confirm('Hapus data ini?')">Hapus</a>
+                <a href="hapus.php?id=<?= $row['id']; ?>" onclick="return confirm('Hapus data ini?')">Hapus</a>
             </td>
         </tr>
         <?php endforeach; ?>
